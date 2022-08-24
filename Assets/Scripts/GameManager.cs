@@ -9,8 +9,16 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        multiplier = 1;
-        logs = 0;
+        multiplier = PlayerPrefs.GetInt("multiplier", 1);
+        logs = PlayerPrefs.GetInt("logs", 0);
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            PlayerPrefs.DeleteAll();
+        }
     }
 
 }

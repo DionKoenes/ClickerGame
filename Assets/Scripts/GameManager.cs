@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static int logs;
-    public static int multiplier;
+    private Game game;
 
     void Start()
     {
-        multiplier = PlayerPrefs.GetInt("multiplier", 1);
-        logs = PlayerPrefs.GetInt("logs", 0);
+        game = GameObject.Find("Game").GetComponent<Game>();
+        game.multiplier = PlayerPrefs.GetInt("multiplier", 1);
+        game.logs = PlayerPrefs.GetInt("logs", 0);
     }
 
     public void Update()

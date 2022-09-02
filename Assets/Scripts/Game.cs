@@ -4,38 +4,41 @@ using UnityEngine;
 
 public class Game : MonoBehaviour
 {
-    public Text ui;
+    [SerializeField] private Text ui;
+
+    public int logs;
+    public int multiplier;
 
     public void Increment()
     {
-        GameManager.logs += GameManager.multiplier;
-        PlayerPrefs.SetInt("logs", GameManager.logs);
+        logs += multiplier;
+        PlayerPrefs.SetInt("logs", logs);
     }
 
     public void Buy(int num)
     {
-        if(num == 1 && GameManager.logs >= 25)
+        if(num == 1 && logs >= 25)
         {
-            GameManager.multiplier += 1;
-            GameManager.logs -= 25;
-            PlayerPrefs.SetInt("logs", GameManager.logs);
-            PlayerPrefs.SetInt("multiplier", GameManager.multiplier);
+            multiplier += 1;
+            logs -= 25;
+            PlayerPrefs.SetInt("logs", logs);
+            PlayerPrefs.SetInt("multiplier", multiplier);
         }
 
-        if (num == 2 && GameManager.logs >= 125)
+        if (num == 2 && logs >= 125)
         {
-            GameManager.multiplier += 10;
-            GameManager.logs -= 125;
-            PlayerPrefs.SetInt("logs", GameManager.logs);
-            PlayerPrefs.SetInt("multiplier", GameManager.multiplier);
+            multiplier += 10;
+            logs -= 125;
+            PlayerPrefs.SetInt("logs", logs);
+            PlayerPrefs.SetInt("multiplier", multiplier);
         }
 
-        if (num == 3 && GameManager.logs >= 1500)
+        if (num == 3 && logs >= 1500)
         {
-            GameManager.multiplier += 100;
-            GameManager.logs -= 1500;
-            PlayerPrefs.SetInt("logs", GameManager.logs);
-            PlayerPrefs.SetInt("multiplier", GameManager.multiplier);
+            multiplier += 100;
+            logs -= 1500;
+            PlayerPrefs.SetInt("logs", logs);
+            PlayerPrefs.SetInt("multiplier", multiplier);
         }
 
 
@@ -43,6 +46,6 @@ public class Game : MonoBehaviour
 
     void Update()
     {
-        ui.text = "Logs: " + GameManager.logs;
+        ui.text = "Logs: " + logs;
     }
 }
